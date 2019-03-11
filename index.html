@@ -3,90 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Allah is almighty</title>
+  <style>
+    html,body{
+    margin:0;
+      padding:0;
+      background-color:black;
+    }
+    </style>
 </head>
 <body>
-
-<svg height="150" width="500">
-  <defs>
-    <radialGradient id="grad1" cx="20%" cy="30%" r="30%" fx="50%" fy="50%">
-      <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:0" />
-      <stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
-    </radialGradient>
-  </defs>
-  <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
-  Sorry, your browser does not support inline SVG.
-</svg>
-
-<div id="myExcelDiv" style="width: 402px; height: 346px"></div>
-<script type="text/javascript" src="https://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script>
-<script type="text/javascript">
-    /*
-    * This code uses the Microsoft Office Excel JavaScript object model to programmatically insert the
-    * Excel Web App into a div with id=myExcelDiv. The full API is documented at
-    * http://msdn.microsoft.com/en-us/library/hh315812.aspx. There you can find out how to programmatically get
-    * values from your Excel file and how to use the rest of the object model. 
-    */
-
-    // Use this file token to reference Book1.xlsx in the Excel APIs
-    var fileToken = "SD310A16DD64ED7E41!112/3533661997762444865/";
-    var ewa = null;
-
-    // Run the Excel load handler on page load.
-    if (window.attachEvent)
-    {
-        window.attachEvent("onload", loadEwaOnPageLoad);
-    } else
-    {
-        window.addEventListener("DOMContentLoaded", loadEwaOnPageLoad, false);
-    }
-
-    function loadEwaOnPageLoad()
-    {
-        var props = {
-            uiOptions: {
-                showGridlines: false,
-                showRowColumnHeaders: false,
-                showParametersTaskPane: false
-            },
-            interactivityOptions: {
-                allowTypingAndFormulaEntry: false,
-                allowParameterModification: false,
-                allowSorting: false,
-                allowFiltering: false,
-                allowPivotTableInteractivity: false
-            }
-        };
-        // Embed workbook using loadEwaAsync
-        Ewa.EwaControl.loadEwaAsync(fileToken, "myExcelDiv", props, onEwaLoaded);
-    }
-
-    function onEwaLoaded(asyncResult)
-    { 
-        if (asyncResult.getSucceeded())
-        {
-            // Use the AsyncResult.getEwaControl() method to get a reference to the EwaControl object
-            ewa = asyncResult.getEwaControl();
-            ewa.add_activeCellChanged(cellChanged);
-        }
-        else
-        {
-            alert("Async operation failed!");
-        }
-        // ...
-    }
-
-    // Handle the active cell changed event.
-    function cellChanged(rangeArgs)
-    {
-        // Use the RangeEventArgs object to get information about the range.
-        var sheetName = rangeArgs.getRange().getSheet().getName();
-        var col = rangeArgs.getRange().getColumn();
-        var row = rangeArgs.getRange().getRow();
-        var value = rangeArgs.getFormattedValues();
-        alert("The active cell is located at row " + (row + 1) + " and column " + (col + 1) + " with value '" + value + "'.");
-        // ...
-    }
-</script>
-  
 </body>
 </html>
